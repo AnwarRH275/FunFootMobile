@@ -9,7 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BottomSheetModal, BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import 'expo-dev-client';
 import 'react-native-gesture-handler'
-//import messaging from '@react-native-firebase/messaging';
+import messaging from '@react-native-firebase/messaging';
 import instance from './src/config/instance';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native';
@@ -22,16 +22,16 @@ export default function App() {
    const [isAuthenticated,setIsAuthenticated] = useState(true);
    
 
-  //  const requestUserPermission = async ()=>{
-  //   const authStatus = await messaging().requestPermission();
-  //   const enabled =
-  //     authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-  //     authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+   const requestUserPermission = async ()=>{
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
-  //   if (enabled) {
-  //     console.log('Authorization status:', authStatus);
-  //   }
-  //  }
+    if (enabled) {
+      console.log('Authorization status:', authStatus);
+    }
+   }
 
    useEffect(() => {
     
@@ -53,52 +53,52 @@ export default function App() {
     checkToken();
 
 
-    // if(requestUserPermission()){
-    //   messaging().getToken().then(token=>{
-    //     instance.post('tokenNotif/send',{
-    //       "token": token
-    //     }).then((reponse)=>{
-    //       console.log(reponse.data)
-    //     })
-    //     // console.log(token+" ---");
+    if(requestUserPermission()){
+      messaging().getToken().then(token=>{
+        instance.post('tokenNotif/send',{
+          "token": token
+        }).then((reponse)=>{
+          console.log(reponse.data)
+        })
+        // console.log(token+" ---");
 
-    //   })
-    // }else{
-    //   console.log('Failed token status',authStatus);
-    // }
+      })
+    }else{
+      console.log('Failed token status',authStatus);
+    }
 
-    // messaging()
-    //   .getInitialNotification()
-    //   .then(async remoteMessage => {
-    //     if (remoteMessage) {
-    //       console.log(
-    //         'Notification caused app to open from quit state:',
-    //         remoteMessage.notification,
-    //       );
+    messaging()
+      .getInitialNotification()
+      .then(async remoteMessage => {
+        if (remoteMessage) {
+          console.log(
+            'Notification caused app to open from quit state:',
+            remoteMessage.notification,
+          );
 
-    //     }
+        }
 
-    //   });
+      });
 
 
-    //   messaging().onNotificationOpenedApp(async (remoteMessage) => {
-    //     console.log(
-    //       'Notification caused app to open from background state:',
-    //       remoteMessage.notification,
-    //     );
-    //     // navigation.navigate(Message.data.tremoteype);
-    //   });
+      messaging().onNotificationOpenedApp(async (remoteMessage) => {
+        console.log(
+          'Notification caused app to open from background state:',
+          remoteMessage.notification,
+        );
+        // navigation.navigate(Message.data.tremoteype);
+      });
   
-    //       // Register background handler
-    // messaging().setBackgroundMessageHandler(async remoteMessage => {
-    //   console.log('Message handled in the background!', remoteMessage);
-    // });
+          // Register background handler
+    messaging().setBackgroundMessageHandler(async remoteMessage => {
+      console.log('Message handled in the background!', remoteMessage);
+    });
 
-    // const unsubscribe = messaging().onMessage(async remoteMessage => {
-    // //  Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
-    // });
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+    //  Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
 
-    // return unsubscribe;
+    return unsubscribe;
 
   }, []);
 
@@ -138,7 +138,5 @@ footer:{
   right: Platform.OS==='ios' ? 10 : 0,
   left: Platform.OS==='ios' ? 10 : 0,
 
-  
-  
 }
 });

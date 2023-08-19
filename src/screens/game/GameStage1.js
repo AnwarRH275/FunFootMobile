@@ -14,8 +14,21 @@ import { useAuth } from '../../context/AuthProvider';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Switch2 from '../../components/Switch2';
+import { InterstitialAd, AdEventType, TestIds } from 'react-native-google-mobile-ads';
+
+const adUnitId = __DEV__ ? TestIds.INTERSTITIAL : 'ca-app-pub-6300362813805470~3620870563';
+const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
+  requestNonPersonalizedAdsOnly: true,
+  keywords: ['fashion', 'clothing'],
+});
+
 
 const GameStage1 = ({route}) => {
+
+
+
+
+
   const [selectedIndex, setSelectedIndex] = useState(true);
   const [matchs,setMatchs] = useState(null);
   const [token,setToken] = useState(null);
@@ -27,7 +40,20 @@ const GameStage1 = ({route}) => {
   const navigation = useNavigation();
 
   useEffect(() => {
+    const unsubscribe = interstitial.addAdEventListener(AdEventType.LOADED, () => {
+   //   setLoaded(true);
+    });
 
+    // Start loading the interstitial straight away
+    interstitial.load();
+
+    // Unsubscribe from events on unmount
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+
+    
 
 
     const checkToken = async () => {
@@ -97,7 +123,7 @@ const GameStage1 = ({route}) => {
 
       const handlePress = async () => {
        
-       
+      
         let validation = true;
           
         
@@ -123,6 +149,7 @@ const GameStage1 = ({route}) => {
             //console.log(response.data);
 
             Alert.alert('Pari accepté !');
+            interstitial.show();
             //navigation.goBack();
             navigation.navigate(ROUTES.HOME);
           } catch (error) {
