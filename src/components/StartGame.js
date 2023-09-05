@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, Image ,Platform, Dimensions, Alert} from 'react
 import React, { useEffect, useState } from 'react'
 import NavigationCat from './NavigationCat';
 import { COLORS, ROUTES } from '../constants';
-import { useNavigation } from '@react-navigation/native';
 import InformationGame from './InformationGame';
 import { useAuth } from '../context/AuthProvider';
 import condition100 from '../assets/game/100.jpg';
