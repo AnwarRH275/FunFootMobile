@@ -9,22 +9,51 @@
       "distribution": "internal",
       "ios": {"image": "latest"}
     },
-    "preview": {
+    "preview":{
+      "channel": "staging",
       "distribution": "internal",
       "ios": {
-        "resourceClass": "m-medium"
+        "image": "latest"
+      },
+      "android": {
+        "buildType": "apk",
+        "image": "latest"
+      },
+      "env": {
+        "APP_ENV": "production",
+        "EXPO_NO_DOTENV": "1",
+        "FLIPPER_DISABLE": "1"
+      },
+
+      "prebuildCommand": "prebuild --skip-dependency-update react",
+      "cache": {
+        "key": "eas-1"
       }
     },
     "production": {
+      "channel": "production",
+      "distribution": "store",
       "ios": {
-        "resourceClass": "m-medium"
+        "image": "latest"
       },
       "android": {
-          "autoIncrement":true
+        "buildType": "app-bundle",
+        "image": "latest"
+      },
+      "env": {
+        "EXPO_NO_DOTENV": "1",
+        "APP_ENV": "production",
+        "FLIPPER_DISABLE": "1"
+      },
+      "prebuildCommand": "prebuild --skip-dependency-update react",
+      "cache": {
+        "key": "eas-1"
       }
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      
+    }
   }
 }

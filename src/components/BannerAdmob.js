@@ -1,10 +1,10 @@
-import { View, Text, Platform } from 'react-native'
+import { View} from 'react-native'
 import React from 'react'
-import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
+import { BannerAd, BannerAdSize, TestIds} from 'react-native-google-mobile-ads';
 
 
 
-const adUnitId = Platform.OS == 'ios' ? 'ca-app-pub-6300362813805470~6771777236':'ca-app-pub-6300362813805470~3620870563';
+const adUnitId = __DEV__ ? TestIds.BANNER :  'ca-app-pub-6300362813805470/2341143834';
 
 const BannerAdmob = () => {
   return (
@@ -12,9 +12,7 @@ const BannerAdmob = () => {
     <BannerAd
       unitId={adUnitId}
       size={BannerAdSize.FULL_BANNER}
-      requestOptions={{
-        requestNonPersonalizedAdsOnly: true,
-      }}
+    
     />
     </View>
   )

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "73366657547",
+    "project_id": "fun-foot-v2",
+    "storage_bucket": "fun-foot-v2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73366657547:android:b8d9c6d3f69df739a8050e",
+        "android_client_info": {
+          "package_name": "com.agprogress.funfoot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73366657547-gvqmn74jeghf1sqsad131t1rifnmm3hb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.agprogress.funfoot",
+            "certificate_hash": "4d06c9b13d1fde5056f1f17d7d5252e2dd606232"
+          }
+        },
+        {
+          "client_id": "73366657547-vlsf70g6fim82jeqlf3hgm7be0qr0sh6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.agprogress.funfoot",
+            "certificate_hash": "0ce8fdbedfcb027a82337cc2a652013b2dad78bd"
+          }
+        },
+        {
+          "client_id": "73366657547-lilhusfoeau20uhrivjoh77ne3uoiuls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4XwEzYpAjSxon1uA7sHFhMP9YChGsXPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73366657547-lilhusfoeau20uhrivjoh77ne3uoiuls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

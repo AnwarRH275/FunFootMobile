@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, FlatList, Text, TouchableOpacity } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
 import Background from '../../components/Background';
-import Header from '../../components/Header';
 import Match from '../../components/Match';
 import Scores from '../../components/Scores';
 import { COLORS, ROUTES } from '../../constants';
-import Switch from '../../components/Switch'
 import path from '../../assets/onboarding3.png'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axiosInstance from '../../config/instance';
@@ -16,7 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import Switch2 from '../../components/Switch2';
 import { InterstitialAd, AdEventType, TestIds } from 'react-native-google-mobile-ads';
 
-const adUnitId = __DEV__ ? TestIds.INTERSTITIAL : 'ca-app-pub-6300362813805470~3620870563';
+const adUnitId = __DEV__ ? TestIds.INTERSTITIAL : 'ca-app-pub-6300362813805470/9752729993';
 const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
   requestNonPersonalizedAdsOnly: true,
   keywords: ['fashion', 'clothing'],

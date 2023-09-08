@@ -1,20 +1,33 @@
 import  React,{useEffect, useState} from 'react';
-import {KeyboardAvoidingView, SafeAreaView, Text,Alert} from 'react-native';
-import {DrawerActions, NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
+import mobileAds from 'react-native-google-mobile-ads';
 
 import AuthNavigator from './src/navigations/AuthNavigator';
 import DrawerNavigator from './src/navigations/DrawerNavigator';
-import { AuthProvider, useAuth } from './src/context/AuthProvider';
+import { AuthProvider} from './src/context/AuthProvider';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { BottomSheetModal, BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import 'expo-dev-client';
 import 'react-native-gesture-handler'
 import messaging from '@react-native-firebase/messaging';
 import instance from './src/config/instance';
-import { View } from 'react-native';
 import { StyleSheet } from 'react-native';
 import { COLORS } from './src/constants';
 import { Platform } from 'react-native';
+
+mobileAds()
+  .setRequestConfiguration({
+    // An array of test device IDs to add to the allow list.
+    testDeviceIdentifiers: ['1b3d94db-2260-48aa-8776-2abf866e5c37', 'OnePlus'],
+  })
+  .then(() => {
+    // Request config successfully set!
+  });
+mobileAds()
+  .initialize()
+  .then(adapterStatuses => {
+    // Initialization complete!
+  });
 
 
 export default function App() {
@@ -58,7 +71,6 @@ export default function App() {
         instance.post('tokenNotif/send',{
           "token": token
         }).then((reponse)=>{
-          console.log(reponse.data)
         })
         // console.log(token+" ---");
 

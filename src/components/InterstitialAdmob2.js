@@ -7,7 +7,7 @@ import ads3 from '../assets/ads/ad3.png';
 
 
 
-const adUnitId = Platform.OS == 'ios' ? 'ca-app-pub-6300362813805470~6771777236' : 'ca-app-pub-6300362813805470~3620870563';
+const adUnitId = __DEV__ ? TestIds.INTERSTITIAL : 'ca-app-pub-6300362813805470/9752729993';
 
 
 
