@@ -3,7 +3,6 @@ import React from 'react';
 import {useRoute} from '@react-navigation/native';
 
 const ForgotPassword = () => {
-  const route = useRoute();
   
   return (
     <View style={styles.container}>

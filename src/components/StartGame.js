@@ -11,11 +11,9 @@ import BannerAdmob from './BannerAdmob';
 import axiosInstance from '../config/instance'
 
 
-
 const StartGame = ({setStartGame,banner,type}) => {
 
   const { scores, setScores,username,tel,descriptionGame2,setDesciptionGame2 } = useAuth();
-  
   const [descriptionGame,setDesciptionGame] = useState('');
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
@@ -77,7 +75,7 @@ const StartGame = ({setStartGame,banner,type}) => {
       <View style={styles.container}>
       {descriptionGame != '' && <InformationGame text={descriptionGame} size={50}/>  } 
     {type == 'stage1' && (
-          <View style={{width:"80%",top:"-20%"}}> 
+          <View style={{width:"80%"}}> 
           <Image style={imageStyle} source={banner} />
           {descriptionGame2 != '' && <InformationGame text={descriptionGame2} size={70}/>  } 
        </View>

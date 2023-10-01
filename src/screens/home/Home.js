@@ -1,4 +1,4 @@
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import {COLORS, ROUTES} from '../../constants';
 import Background from '../../components/Background';
@@ -23,8 +23,9 @@ const Home = ({navigation}) => {
 
       <Header />
       {/* <Scores /> */}
-      
+    <ScrollView >
       <StartGame setStartGame = {ROUTES.GAME_S1} banner={banner} type={"stage1"} />
+      </ScrollView>
       {/* <BannerAdx
       unitId={adUnitId}
       size={BannerAdSize.FULL_BANNER}

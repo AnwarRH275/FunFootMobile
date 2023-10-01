@@ -9,6 +9,8 @@ import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../context/AuthProvider';
 import moment from 'moment-timezone';
 import { format, isSameDay } from 'date-fns';
+import {Dimensions} from 'react-native';
+
 
 const NavigationCat = ({setStartGame}) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -223,10 +225,10 @@ const styles = {
     // top:"-50%",
     alignItems: 'flex-start',
     alignItems: 'center',
-    padding: 9,
+    padding: Dimensions.get('window').height > 768 ? 4 : 9,
     margin: 10,
   //  marginBottom:180,
-    width: 260,
+    width:  260,
     height: 230,
     backgroundColor: COLORS.primary,
     borderWidth: 1,
@@ -238,21 +240,21 @@ const styles = {
   },
   itemText: {
     fontWeight: '600',
-    fontSize: 18,
+    fontSize:  Dimensions.get('window').height > 768 ? 18 : 15,
     lineHeight: 39,
     textAlign: 'center',
     color: '#FFFFFF',
   },
   itemText2:{
     fontWeight: '800',
-    fontSize: 23,
+    fontSize:  Dimensions.get('window').height > 768 ? 23 : 20,
     lineHeight: 39,
     textAlign: 'center',
     color: '#FFFFFF',
   },
   itemText4:{
     fontWeight: '600',
-    fontSize: 15,
+    fontSize:  Dimensions.get('window').height > 768 ? 15 : 12,
     lineHeight: 39,
     textAlign: 'center',
     // marginVertical:'-3',
@@ -262,7 +264,7 @@ const styles = {
   itemText3:{
     fontWeight: '800',
     marginVertical:-7,
-    fontSize: 15,
+    fontSize:  Dimensions.get('window').height > 768 ? 15 : 12,
     lineHeight: 39,
     textAlign: 'center',
     color: '#FFFFFF',

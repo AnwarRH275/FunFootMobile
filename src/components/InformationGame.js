@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, Platform } from 'react-native'
+import { View, Text, StyleSheet, Image, Platform, Dimensions } from 'react-native'
 import React from 'react'
 import { COLORS } from '../constants';
 import ticket from '../assets/game/golden-ticket.png'
@@ -25,7 +25,7 @@ export default InformationGame;
 
 const styles = StyleSheet.create({
   row: {
-    position: 'relative',
+   position: 'relative',
     alignItems: 'center',
   },
   container: {
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: COLORS.white,
-    fontSize: 23,
+    fontSize: Dimensions.get('window').height > 768 ? 23: 16,
     fontWeight: '600',
     marginHorizontal: 10,
     flexWrap: 'wrap',
