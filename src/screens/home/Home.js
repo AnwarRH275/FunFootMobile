@@ -23,7 +23,7 @@ const Home = ({navigation}) => {
 
       <Header />
       {/* <Scores /> */}
-    <ScrollView >
+    <ScrollView contentContainerStyle={{paddingBottom: 50}} >
       <StartGame setStartGame = {ROUTES.GAME_S1} banner={banner} type={"stage1"} />
       </ScrollView>
       {/* <BannerAdx

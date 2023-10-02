@@ -71,7 +71,7 @@ const StartGame = ({setStartGame,banner,type}) => {
     
     <View style={{flexDirection:'column',justifyContent:'center'}}>
    
-  
+   <BannerAdmob />
       <View style={styles.container}>
       {descriptionGame != '' && <InformationGame text={descriptionGame} size={50}/>  } 
     {type == 'stage1' && (
@@ -98,7 +98,7 @@ const StartGame = ({setStartGame,banner,type}) => {
       
           <NavigationCat setStartGame={setStartGame} />
           <View style={{position:"relative",resizeMode: 'cover',justifyContent:'center',alignSelf:'center',marginVertical:20}}>
-            <BannerAdmob />
+           
            </View>
       </View>
       )}
