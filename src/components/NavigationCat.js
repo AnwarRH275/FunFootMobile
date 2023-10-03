@@ -31,7 +31,7 @@ const NavigationCat = ({setStartGame}) => {
     const userDate = new Date(date + ' ' + heure); // Combine date and time into a single string and parse as a Date object
     
     if (userDate.getTime() < currentDate.getTime()) {
-      Alert.alert('Pari terminé.', 'Le ' + date + ' à ' + heure);
+      Alert.alert('Jeu terminé.', 'Le ' + date + ' à ' + heure);
       return;
     }
     
