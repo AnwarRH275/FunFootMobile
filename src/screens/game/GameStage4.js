@@ -69,7 +69,7 @@ const GameStage2 = ({route}) => {
   const handleResultUpdate = (id, newResult) => {
     const updatedMatchs = matchs.map(match => {
       if (match.id === id) {
-        return { ...match, resultat: newResult,etat:"Gains Potentiel 100 000€ " };
+        return { ...match, resultat: newResult,etat:"Gains Potentiel 100 000" };
       }
       return match;
     });
@@ -150,7 +150,7 @@ const GameStage2 = ({route}) => {
             <TouchableOpacity style={styles.containerbtn}
             onPress={handlePress}
             >  
-              <Text style={styles.text2}>Parier</Text>
+              <Text style={styles.text2}>Jouer</Text>
             </TouchableOpacity>
           </View> 
     </Background>

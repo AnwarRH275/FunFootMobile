@@ -69,7 +69,7 @@ const GameStage2 = ({route}) => {
   const handleResultUpdate = (id, newResult) => {
     const updatedMatchs = matchs.map(match => {
       if (match.id === id) {
-        return { ...match, resultat: newResult,etat:"Gains Potentiel 10 000€ " };
+        return { ...match, resultat: newResult,etat:"Gains Potentiel 10 000 " };
       }
       return match;
     });
@@ -115,7 +115,7 @@ const GameStage2 = ({route}) => {
             });
             //console.log(response.data);
 
-            Alert.alert('Pari accepté !');
+            Alert.alert('Accepté !');
             //navigation.goBack();
             navigation.navigate(ROUTES.HOME);
           } catch (error) {
@@ -150,7 +150,7 @@ const GameStage2 = ({route}) => {
             <TouchableOpacity style={styles.containerbtn}
             onPress={handlePress}
             >  
-              <Text style={styles.text2}>Parier</Text>
+              <Text style={styles.text2}>Jouer</Text>
             </TouchableOpacity>
           </View> 
     </Background>
