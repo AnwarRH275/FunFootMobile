@@ -71,8 +71,9 @@ const StartGame = ({setStartGame,banner,type}) => {
     
     <View style={{flexDirection:'column',justifyContent:'center'}}>
    
-   <BannerAdmob />
       <View style={styles.container}>
+           <BannerAdmob />
+
       {descriptionGame != '' && <InformationGame text={descriptionGame} size={50}/>  } 
     {type == 'stage1' && (
           <View style={{width:"80%"}}> 
