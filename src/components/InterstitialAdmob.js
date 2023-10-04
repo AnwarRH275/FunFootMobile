@@ -13,7 +13,6 @@ const adUnitId = __DEV__ ? TestIds.INTERSTITIAL : 'ca-app-pub-6300362813805470/9
 
 const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
     requestNonPersonalizedAdsOnly: true,
-    keywords: ['fashion', 'clothing'],
   });
   
 const InterstitialAdmob = () => {

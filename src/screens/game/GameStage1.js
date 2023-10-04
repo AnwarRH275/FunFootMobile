@@ -11,14 +11,17 @@ import { useAuth } from '../../context/AuthProvider';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Switch2 from '../../components/Switch2';
-import { InterstitialAd, AdEventType, TestIds } from 'react-native-google-mobile-ads';
+import { InterstitialAd, AdEventType, TestIds, InterstitialAdManager } from 'react-native-google-mobile-ads';
 
 const adUnitId = __DEV__ ? TestIds.INTERSTITIAL : 'ca-app-pub-6300362813805470/9752729993';
-const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
+const adsList=[0,1,2,3]
+const ads=[]
+adsList.forEach(()=>ads.push(InterstitialAd.createForAdRequest(adUnitId, {
   requestNonPersonalizedAdsOnly: true,
-  keywords: ['fashion', 'clothing'],
-});
-
+})))
+// const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
+//   requestNonPersonalizedAdsOnly: true,
+// });
 
 const GameStage1 = ({route}) => {
 
@@ -26,31 +29,33 @@ const GameStage1 = ({route}) => {
 
 
 
-  const [selectedIndex, setSelectedIndex] = useState(true);
   const [matchs,setMatchs] = useState(null);
   const [token,setToken] = useState(null);
   
   const { scores, setScores,username } = useAuth();
 
-
   const { typeGame } = route.params;
   const navigation = useNavigation();
+  const [adsCount, setAdsCount] = useState(0);
 
   useEffect(() => {
-    const unsubscribe = interstitial.addAdEventListener(AdEventType.LOADED, () => {
-   //   setLoaded(true);
-    });
-
+    
+   
     // Start loading the interstitial straight away
-    interstitial.load();
+    ads.forEach(ad => ad.load());
 
     // Unsubscribe from events on unmount
-    return unsubscribe;
   }, []);
-
-  useEffect(() => {
-
+   
+  ads.forEach( (ad, index)=> {
+    ad.addAdEventListener(AdEventType.CLOSED, () => {
+      if(index<3){
+        ads[index+1].show();
+      }
+    });
+  });
     
+  useEffect(() => {
 
 
     const checkToken = async () => {
@@ -146,7 +151,8 @@ const GameStage1 = ({route}) => {
             //console.log(response.data);
 
             Alert.alert('Accepté !');
-            interstitial.show();
+            ads[0].show();
+            setAdsCount(adsCount+1);
             //navigation.goBack();
             navigation.navigate(ROUTES.HOME);
           } catch (error) {
