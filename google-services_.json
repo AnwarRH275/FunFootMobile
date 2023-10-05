@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "817047548271",
+    "project_id": "funfootfcm",
+    "storage_bucket": "funfootfcm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817047548271:android:d1d5c873930e4671a7f89a",
+        "android_client_info": {
+          "package_name": "com.agprogress.funfootmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817047548271-7te5aitgsq243o5mmct842hcnhv5a1gm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.agprogress.funfootmobile",
+            "certificate_hash": "94f4d389b7274498c2ea0f918d05f4c4cb397717"
+          }
+        },
+        {
+          "client_id": "817047548271-7k02a44bevk1553ebl0fnliuqqf1nt3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJbEMtxkseInf0-tHrknw9JyV8kIP3drI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817047548271-7k02a44bevk1553ebl0fnliuqqf1nt3m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
