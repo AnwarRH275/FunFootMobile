@@ -29,13 +29,7 @@ mobileAds()
     // Initialization complete!
   });
 
-
-export default function App() {
-
-   const [isAuthenticated,setIsAuthenticated] = useState(true);
-   
-
-   const requestUserPermission = async ()=>{
+  const requestUserPermission = async ()=>{
     const authStatus = await messaging().requestPermission();
     const enabled =
       authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
@@ -44,12 +38,14 @@ export default function App() {
     if (enabled) {
       console.log('Authorization status:', authStatus);
     }
+    return enabled;
    }
+export default function App() {
 
-   useEffect(() => {
-    
-
-
+   const [isAuthenticated,setIsAuthenticated] = useState(true);
+   
+   useEffect( () => {
+      
     const checkToken = async () => {
       try {
       // await AsyncStorage.clear();
@@ -63,10 +59,17 @@ export default function App() {
         console.error(error);
       }
     };
+
     checkToken();
 
-
-    if(requestUserPermission()){
+ if (Platform.OS === 'android') {
+   
+  
+   const permission= false;
+   requestUserPermission().then((response)=>{
+    permission = response;
+   });
+    if(permission ){
       messaging().getToken().then(token=>{
         instance.post('tokenNotif/send',{
           "token": token
@@ -75,7 +78,8 @@ export default function App() {
         // console.log(token+" ---");
 
       })
-    }else{
+    }
+    else {
       console.log('Failed token status',authStatus);
     }
 
@@ -111,7 +115,7 @@ export default function App() {
     });
 
     return unsubscribe;
-
+  }
   }, []);
 
 
